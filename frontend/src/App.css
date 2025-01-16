@@ -1,0 +1,49 @@
+.App {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+.body{
+  background-color: #4CAF50;
+}
+
+input,
+textarea,
+button {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+h1 {
+  color: #333;
+}
+
+h2 {
+  color: #555;
+}
+
+.event-list {
+  margin-top: 20px;
+}
+
+.event-item {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.event-item h3 {
+  margin-top: 0;
+}
+
+.event-item p {
+  margin: 5px 0;
+}
