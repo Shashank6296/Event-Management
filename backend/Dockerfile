@@ -1,18 +1,37 @@
-# Step 1: Use Node.js as base image
-FROM node:16
+name: Docker Build and Push
 
-# Step 2: Set working directory
-WORKDIR /app
+on:
+  push:
+    branches:
+      - main
 
-# Step 3: Copy backend files
-COPY package*.json ./
-COPY . .
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-# Step 4: Install dependencies
-RUN npm install
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-# Step 5: Expose port
-EXPOSE 5000
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
-# Step 6: Start backend
-CMD ["npm", "start"]
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Debugging - Check Docker version
+      run: docker --version
+
+    - name: Debugging - List files in the backend directory
+      run: ls -al ./backend
+
+    - name: Build Docker image
+      run: |
+        docker build --no-cache -t ${{ secrets.DOCKER_USERNAME }}/event-management-backend:latest ./backend
+
+    - name: Push Docker image
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/event-management-backend:latest
