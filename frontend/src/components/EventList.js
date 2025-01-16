@@ -4,7 +4,7 @@ import axios from 'axios';
 const EventList = ({ events, setEvents }) => {
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/events/${id}`);
+      await axios.delete(`https://dashboard.render.com/web/srv-cu4b89dds78s739qs2sg/deploys/dep-cu4b89lds78s739qs2vg/${id}`);
       setEvents((prevEvents) => prevEvents.filter((event) => event._id !== id));
     } catch (error) {
       console.error('Error deleting event:', error);
@@ -26,7 +26,7 @@ const EventList = ({ events, setEvents }) => {
           description: updatedDescription || eventToEdit.description,
         };
 
-        const response = await axios.put(`http://localhost:5000/api/events/${id}`, updatedEvent);
+        const response = await axios.put(`https://dashboard.render.com/web/srv-cu4b89dds78s739qs2sg/deploys/dep-cu4b89lds78s739qs2vg/${id}`, updatedEvent);
         setEvents((prevEvents) =>
           prevEvents.map((event) => (event._id === id ? response.data : event))
         );
