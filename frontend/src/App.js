@@ -9,7 +9,7 @@ const App = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/events');
+        const response = await axios.get('https://dashboard.render.com/web/srv-cu4b89dds78s739qs2sg/deploys/dep-cu4b89lds78s739qs2vg');
         setEvents(response.data);
       } catch (error) {
         console.error('Error fetching events:', error);
