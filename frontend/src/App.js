@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EventForm from './components/EventForm';
 import EventList from './components/EventList';
-import './App.css'
+import "./App.css"
 const App = () => {
   const [events, setEvents] = useState([]);
 
